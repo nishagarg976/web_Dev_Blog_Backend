@@ -13,9 +13,9 @@ router.put('/:id',isAuthenticated,updateBlog);
 
 router.delete('/:id',isAuthenticated,deleteBlog);
 
-// router.get('/allblogs',getAllBlogs);
+router.get('/allblogs',getAllBlogs);
 
-// router.get('/blog/:id',isAuthenticated,getBlogById); 
+router.get('/blog/:id',isAuthenticated,getBlogById); 
 
 
 

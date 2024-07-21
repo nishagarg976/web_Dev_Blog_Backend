@@ -41,9 +41,9 @@ export const userLogin =async (req, res) => {
     message: "invalid email or password"
   })
 
-
   generateCookie(user,res,201,`User login Successfully!, Hello ${user.name}`)
 }
+
 
 export const userLogout = async (req, res) => {
   res.status(200).cookie("token", "", {
@@ -60,4 +60,23 @@ export const getMyProfile = (req,res)=>{
       "message":"your profile",
       user:req.user
   })
+} 
+
+export const getUserById = async(req,res)=>{
+  const id = req.params.id;
+
+  const user = await User.findById(id);
+  
+  if(!user) return res.status(404).json({
+      success:false,
+      message:"Invalid ID"
+  })
+
+
+  res.json({
+      success:true,
+      message:"This is Single User",
+      user
+  })
+
 } 
